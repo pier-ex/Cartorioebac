@@ -9,32 +9,33 @@
 
 int registro()
 {
-	
+	// Inicio da criação de variavéis/string
 	char arquivo[40];
 	char cpf[40];
 	char nome[40];
 	char sobrenome[40];
 	char cargo[40];
+	// final da criação de variáveis/string
 
 	
-	printf("Digite o cpf a ser cadastrado: ");
-	scanf("%s", cpf);
+	printf("Digite o cpf a ser cadastrado: "); // coletando informaçções do usuario.
+	scanf("%s", cpf); //%s refere-se a string/ quando precisa-se salvar uma string
 	
 	strcpy(arquivo, cpf); // Responsável por copiar os valores da string
 	
 	FILE *file; // cria o arquivo 
-	file = fopen(arquivo, "w"); // cria o arquivo
+	file = fopen(arquivo, "w"); // cria o arquivo, "w" significa "escrever"
 	fprintf(file,cpf); //salvo valor da variável
 	fclose(file);// fecha o arquivo
 	
-	file = fopen(arquivo, "a");
-	fprintf(file,",");
-	fclose(file);
+	file = fopen(arquivo, "a"); // abre e altera o arquivo
+	fprintf(file,","); // adiciona uma virgula para melhor organizar as informações quando forem consultadas
+	fclose(file); //fecha arquivo
 	
-	printf("Digite o nome a ser cadastrado");
-	scanf("%s",nome);
+	printf("Digite o nome a ser cadastrado"); // chama a mnesagem para cadastrar o nome
+	scanf("%s",nome); // salva a informação "nome"
 	
-	file = fopen(arquivo, "a");
+	file = fopen(arquivo, "a"); 
 	fprintf(file,nome);
 	fclose(file);
 	
@@ -42,8 +43,8 @@ int registro()
 	fprintf(file,",");
 	fclose(file);
 	
-	printf("Digite o sobrenome a ser cadastrado: ");
-	scanf("%s", sobrenome);
+	printf("Digite o sobrenome a ser cadastrado: "); // chama a mensagem para cadastrar o sobrenome
+	scanf("%s", sobrenome); //salva a informação sobrenome
 	
 	file = fopen(arquivo, "a");
 	fprintf(file,sobrenome);
@@ -53,15 +54,15 @@ int registro()
 	fprintf(file,",");
 	fclose(file);
 	
-	printf("Digite o cargo a ser cadastrado: ");
-	scanf("%s", cargo);
+	printf("Digite o cargo a ser cadastrado: "); // chama a mensagem para adicionar o cargo
+	scanf("%s", cargo); //salva a informação "cargo"
 	
 	file = fopen(arquivo, "a");
 	fprintf(file,cargo);
 	fclose(file);
 	
 	
-	system("pause");	
+	system("pause"); //pausa o sistema, sendo necessário uma ação para seguir	
 	
 	
 	
@@ -72,13 +73,16 @@ int registro()
 
 }
 
-int consulta()
+int consulta() //função responsável por consultar os usuários cadastrados
 {
 	
-	setlocale(LC_ALL, "Portuguese");
+	setlocale(LC_ALL, "Portuguese"); // definindo o idioma
 	
-	char cpf[40];
+	//criação de variáveis
+	char cpf[40]; 
 	char conteudo[200];
+	
+	// fim da seção de variavéis.
 	
 	printf("Digite o cpf a ser consultado");
 	scanf("%s",cpf);
@@ -128,12 +132,14 @@ int deletar()
 int main()
 	{
 	
-	int opcao =0;
-	int laco=1;
+	//definindo variáveis
+	
+	int opcao =0; //armazena a opção do usuário
+	int laco=1; //controla o loop
 	
 	
 	
-	for(laco=1;laco=1;)
+	for(laco=1;laco=1;) // loop infinito para o menu principal
 	
 		{
 		
@@ -149,33 +155,36 @@ int main()
 	printf("\t1 Registrar nomes\n\n ");
 	printf("\t2 Consultar nomes\n\n ");
 	printf("\t3 Deletar nomes\n\n ");
+	printf("\t4 Sair do sistema\n\n");
 	printf("");
-	printf("Escolha digitando 1, 2, ou 3\n");
+	printf("Escolha digitando 1, 2, 3 ou 4\n");
 	
 	
-	scanf("%d" , &opcao);
+	scanf("%d" , &opcao); //armazenando a escolha do usuário
 	
 	
-	system("cls");
+	system("cls"); //limpa a tela
 	
-	switch(opcao)
+	switch(opcao) //inicio da seleção com base na escolha do usuário
 	{
 		case 1:
-		registro();
+		registro(); //chamado da função de registrar usuários
 		break;
 		
 		case 2:
-		consulta();	
+		consulta();	//chamado da função de registrar usuários
 		break;
 			
 		case 3:
-		deletar();
+		deletar(); //chamado da função de registrar usuários
 		break;
 		
 		case 4:
 		printf("Obrigado por utilizar o sistema");
 		return 0;
 		break; 
+		
+		//chama a mensagem caso o usuário não tenha escolhido nenhuma das opçãoes listadas acima
 		
 	
 		
